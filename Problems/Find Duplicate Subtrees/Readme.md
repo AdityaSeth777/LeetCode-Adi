@@ -1,0 +1,5 @@
+Explanation ->
+
+The findMedianSortedArrays function takes two sorted arrays nums1 and nums2 as input and returns the median of the combined array. The function first ensures that nums1 is the smaller of the two arrays, and then performs a binary search to find the partition points i and j that divide the arrays into left and right halves such that all elements on the left are smaller than all elements on the right. The function then calculates the median based on the values of the max element on the left and the min element on the right. If the combined array has an odd number of elements, the median is simply the max element on the left; otherwise, the median is the average of the max element on the left and the min element on the right. The overall time complexity of the algorithm is O(log(min(m,n))), which meets the requirement of O(log(m+n)).
+
+Question - https://leetcode.com/submissions/detail/906369111/
