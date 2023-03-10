@@ -1,0 +1,3 @@
+Problem -> https://leetcode.com/problems/largest-perimeter-triangle/submissions/912720420/
+
+We first sort the given array in descending order so that we can easily check for the largest possible perimeter. Then we loop through the array and check if a triangle can be formed with the current three elements. If it can be formed, we return the sum of those three elements (which is the perimeter). If we've gone through the entire array and no triangle can be formed, we return 0.

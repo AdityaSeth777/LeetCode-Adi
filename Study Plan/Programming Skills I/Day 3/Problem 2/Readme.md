@@ -1,0 +1,4 @@
+Problem -> https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/submissions/912721545/
+
+
+We initialize the minimum distance to infinity and the minimum index to -1. Then, we loop through each point in the given points list and check if the point is valid (i.e., if it has the same x-coordinate or y-coordinate as the current location). If the point is valid, we calculate the Manhattan distance between the current point and the current location. If the distance is smaller than the current minimum distance, we update the minimum distance and the minimum index. Finally, we return the index of the valid point with the smallest Manhattan distance. If there are no valid points, we return -1.
