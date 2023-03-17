@@ -1,0 +1,3 @@
+Problem -> <https://leetcode.com/problems/verifying-an-alien-dictionary/description/?envType=study-plan&id=programming-skills-i>
+
+The function takes in a list of words in the alien language and the order of the alphabet as input. It first creates a dictionary mapping each character in the order to its position in the order. It then iterates through the list of words, comparing adjacent words to ensure that they are sorted lexicographically according to the given order. If it finds a pair of adjacent words that are not sorted correctly, it immediately returns False. If it gets through the entire list without finding any such pairs, it returns True.
