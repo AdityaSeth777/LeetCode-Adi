@@ -1,5 +1,0 @@
-Logic -> The construct function first defines a recursive helper function build_quad_tree that takes in the sub-matrix of grid specified by its top-left and bottom-right indices. The function checks if the sub-matrix is homogeneous (i.e., all values are the same). If it is, the function creates a leaf node with the same value as the sub-matrix, sets its isLeaf attribute to True, and returns the node. Otherwise, the function recursively calls itself on the four sub-matrices obtained by dividing the current sub-matrix into four equal parts, and returns a non-leaf node with the four resulting child nodes.
-
-Finally, the construct function calls the build_quad_tree function with the full matrix grid and returns the root node of the resulting quad tree.
-
-Question -> https://leetcode.com/submissions/detail/905767884/

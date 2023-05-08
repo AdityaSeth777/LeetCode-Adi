@@ -1,4 +1,0 @@
-Explanation ->
-The idea is to use depth-first search to serialize each subtree as a string in a unique way, such that duplicate subtrees have the same string representation. We use an unordered map to keep track of how many times we have seen each string representation, and we add a node to the result vector whenever we see a string representation for the second time. We also return the string representation of each subtree from the dfs function so that we can build the string representation of its parent subtree.
-
-Problem -> https://leetcode.com/problems/find-duplicate-subtrees/submissions/906369111/
