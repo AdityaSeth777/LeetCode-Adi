@@ -1,0 +1,10 @@
+function curry(fn: Function): Function {
+    const res = [];
+    return function curried(...args) {
+        res.push(...args)
+        if (res.length === fn.length) {
+            return fn(...res);
+        }
+        return (...args2) => curried(...args2);
+    };
+};

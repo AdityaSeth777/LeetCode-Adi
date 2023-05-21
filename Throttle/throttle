@@ -1,0 +1,27 @@
+type F = (...args: any[]) => void
+
+function throttle(fn: F, t: number): F {
+  let canExecute = true
+  let cachedArgs: Parameters<F> | undefined
+    
+  const tryExecute = () => {
+      if (!cachedArgs || !canExecute) {
+          return
+      }
+      
+      canExecute = false
+      fn(...cachedArgs)
+      cachedArgs = undefined
+      
+      setTimeout(() => {
+          canExecute = true
+          tryExecute()
+      }, t)
+  }
+  
+  return function (...args) {
+      cachedArgs = args
+      
+      tryExecute()
+  }
+};
