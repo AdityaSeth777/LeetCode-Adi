@@ -1,0 +1,31 @@
+type Callback = (...args: any[]) => any;
+type Subscription = {
+    unsubscribe: () => void
+}
+
+class EventEmitter {
+    subs: any;
+    constructor(){
+        this.subs = {};
+    }
+    subscribe(eventName: string, callback: Callback): Subscription {
+        if(this.subs[eventName] === undefined) this.subs[eventName] = [];
+        let curIdx = this.subs[eventName].length;
+        this.subs[eventName].push(callback);
+        return {
+            unsubscribe: () => {
+                this.subs[eventName][curIdx] = null;
+            }
+        };
+    }
+
+    emit(eventName: string, args: any[] = []): any {
+        if(this.subs[eventName] === undefined) return [];
+        let res = [];
+        for(let cbFn of this.subs[eventName]) {
+            if(cbFn === null) continue;
+            res.push(cbFn(...args));
+        }
+        return res;
+    }
+}

@@ -1,0 +1,15 @@
+type Fn = (...params: any) => any
+
+function memoize(fn: Fn): Fn {
+    const store : {
+        [key: string | number] : number
+    } = {};
+
+    return function(...args) {
+        const key = args.join();
+        if (store[key] !== undefined) {
+            return store[key];
+        }
+        return store[key] = fn(...args);
+    }
+}

@@ -1,0 +1,18 @@
+const areDeeplyEqual = (o1: any, o2: any): boolean => {
+    if ((typeof o1) !== (typeof o2)) {
+        return false
+    }
+    switch (typeof o1) {
+        case "string": case "boolean": case "number": return o1 === o2
+    }
+    if ((o1 ?? o2) === null) {
+        return o1 === o2
+    }
+    if (Array.isArray(o1) || Array.isArray(o2)) {
+        if (!Array.isArray(o1) || !Array.isArray(o2) || o1.length !== o2.length) {
+            return false
+        }
+        return o1.every((v: any, k: number) => areDeeplyEqual(v, o2[k]))
+    }
+    return Array.from(new Set([...Object.keys(o1), ...Object.keys(o2)])).every(k => areDeeplyEqual(o1[k], o2[k]))
+}

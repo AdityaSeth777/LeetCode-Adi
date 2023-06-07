@@ -1,0 +1,11 @@
+function chunk(arr: any[], size: number): any[][] {
+    var ans:any[] = [];
+    var index:number = 0;
+
+    while (index < arr.length) {
+        ans.push(arr.slice(index, index + size));
+        index += size;
+    }
+
+    return ans;
+};

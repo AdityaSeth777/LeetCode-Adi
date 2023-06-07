@@ -1,0 +1,18 @@
+declare global {
+    interface Array<T> {
+        groupBy(fn: (item: T) => string): Record<string, T[]>
+    }
+}
+
+Array.prototype.groupBy = function(fn) {
+    const groups = {}
+    for (let element of this) {
+        const key = fn(element)
+        
+        if (!(key in groups)) {
+            groups[key] = []
+        }
+        groups[key].push(element)
+    }
+    return groups
+}

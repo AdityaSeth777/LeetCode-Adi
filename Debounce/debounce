@@ -1,0 +1,14 @@
+type F = (...p: any[]) => any
+
+function debounce(fn: F, t: number): F {
+    let timeout: NodeJS.Timeout = null;
+    return function(...args) {
+        if (timeout != null) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            fn(...args);
+            timeout = null;
+        }, t);
+    }
+};

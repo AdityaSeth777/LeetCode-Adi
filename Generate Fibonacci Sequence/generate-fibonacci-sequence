@@ -1,0 +1,7 @@
+function* fibGenerator(): Generator<number, any, number> {
+  const fib = [0, 1, 1];
+  while (true) {
+    yield fib.shift()!;
+    fib.push(fib[0] + fib[1]);
+  }
+}

@@ -1,0 +1,28 @@
+class TimeLimitedCache {
+    // internal caches
+    cache: Map<number, number>;
+    timeouts: Map<number, ReturnType<typeof setTimeout>>;
+
+
+    constructor() {
+        this.cache = new Map();
+        this.timeouts = new Map();
+    }
+
+    set(key: number, value: number, duration: number): boolean {
+        const result = this.cache.has(key)
+        this.cache.set(key, value)
+        clearTimeout(this.timeouts.get(key)) // don't need to check if it exists ourselves
+        // set a timeout to clear the value
+        this.timeouts.set(key, setTimeout(() => this.cache.delete(key), duration))
+        return result
+    }
+
+    get(key: number): number {
+        return this.cache.get(key) ?? -1
+    }
+
+ count(): number {
+        return [...this.cache].length
+    }
+}

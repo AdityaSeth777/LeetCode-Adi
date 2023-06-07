@@ -1,0 +1,12 @@
+function jsonStringify(object: any): string {
+    if (typeof object === 'string')
+        return '"' + object + '"';
+    if (!object || typeof object !== 'object')
+        return String(object);
+    if (Array.isArray(object))
+        return '[' + object.map((item) => jsonStringify(item)) + ']';
+    var ans = ''
+    for (const key in object)
+        ans += '"' + key + '":' + jsonStringify(object[key]) + ',';
+    return '{' + ans.slice(0, -1) + '}'
+};
